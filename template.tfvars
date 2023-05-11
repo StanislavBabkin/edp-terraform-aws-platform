@@ -1,10 +1,13 @@
 ## Check out all the inputs based on the comments below and fill the gaps instead <...>
 ## More details on each variable can be found in the variables.tf file
 
-create_elb = true # set to true if you'd like to create ELB for Gerrit usage
+region   = "" # mandatory
+role_arn = "<ROLE_ARN" # role to assume to run terraform apply, isn't mandatory
+iam_permissions_boundary_policy_arn = "<AWS_PERMISSIONS_BOUNDARY_ARN>" # isn't mandatory
 
-region   = "<REGION>"
-role_arn = "<ROLE_ARN>"
+create_elb = true # set to true if you'd like to create ELB for Gerrit usage
+create_vpc = true
+
 
 platform_name        = "<PLATFORM_NAME>"        # the name of the cluster and AWS resources
 platform_domain_name = "<PLATFORM_DOMAIN_NAME>" # must be created as a prerequisite

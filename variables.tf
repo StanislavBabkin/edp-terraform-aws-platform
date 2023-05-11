@@ -1,3 +1,4 @@
+# 
 variable "create_elb" {
   description = "Whether to create ELB for Gerrit. The variable create_cluster = true is required"
   type        = bool
@@ -7,11 +8,24 @@ variable "create_elb" {
 variable "region" {
   description = "The AWS region to deploy the cluster into (e.g. eu-central-1)"
   type        = string
+  default     = "eu-central-1"
 }
 
 variable "role_arn" {
   description = "The AWS IAM role arn to assume for running terraform (e.g. arn:aws:iam::012345678910:role/EKSDeployerRole)"
   type        = string
+}
+
+variable "deployer_role_name" {
+  description = "The AWS IAM role name for EKS cluster deployment"
+  type        = string
+  default     = "EKSDeployerRole"
+}
+
+variable "iam_permissions_boundary_policy_arn" {
+  description = "ARN for permission boundary to attach to IAM policies"
+  type        = string
+  default     = ""
 }
 
 variable "platform_name" {
@@ -117,7 +131,7 @@ variable "tags" {
   type        = map(any)
 }
 
-// Variables for demand pool
+# Variables for demand pool
 variable "demand_instance_types" {
   description = "AWS instance type to build nodes for demand pool"
   type        = list(any)
@@ -139,7 +153,7 @@ variable "demand_min_nodes_count" {
   default     = 0
 }
 
-// Variables for spot pool
+# Variables for spot pool
 variable "spot_instance_types" {
   description = "AWS instance type to build nodes for spot pool"
   type        = list(any)
