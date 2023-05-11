@@ -1,4 +1,3 @@
-# 
 variable "create_elb" {
   description = "Whether to create ELB for Gerrit. The variable create_cluster = true is required"
   type        = bool
@@ -87,18 +86,6 @@ variable "enable_irsa" {
   description = "Whether to create OpenID Connect Provider for EKS to enable IRSA"
   type        = bool
   default     = false
-}
-
-variable "cluster_iam_role_name" {
-  description = "A cluster IAM role name (not ARN) to run EKS cluster"
-  type        = string
-  default     = ""
-}
-
-variable "worker_iam_instance_profile_name" {
-  description = "An instance profile name (not ARN) to run EKS worker nodes"
-  type        = string
-  default     = ""
 }
 
 variable "add_userdata" {

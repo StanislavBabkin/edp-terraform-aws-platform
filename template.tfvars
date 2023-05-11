@@ -30,9 +30,6 @@ cluster_version = "1.22"
 key_name        = "<AWS_KEY_PAIR_NAME>" # must be created as a prerequisite
 enable_irsa     = true
 
-cluster_iam_role_name            = "<SERVICE_ROLE_FOR_EKS>"
-worker_iam_instance_profile_name = "<SERVICE_ROLE_FOR_EKS_WORKER_NODE"
-
 add_userdata = <<EOF
 export TOKEN=$(aws ssm get-parameter --name <PARAMETER_NAME> --query 'Parameter.Value' --region <REGION> --output text)
 cat <<DATA > /var/lib/kubelet/config.json
