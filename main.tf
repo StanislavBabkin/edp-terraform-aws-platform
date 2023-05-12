@@ -472,7 +472,7 @@ module "eks" {
       load_balancers                           = [module.elb.elb_id]
       root_volume_size                         = 50
       enable_monitoring                        = false
-      iam_instance_profile_name                = aws_iam_instance_profile.worker.name
+      iam_instance_profile_name                = aws_iam_instance_profile.workers.name
       key_name                                 = var.key_name
     },
     {
@@ -492,7 +492,7 @@ module "eks" {
       root_volume_size          = 50
       enable_monitoring         = false
 
-      iam_instance_profile_name = aws_iam_instance_profile.worker.name
+      iam_instance_profile_name = aws_iam_instance_profile.workers.name
       key_name                  = var.key_name
     },
   ]
