@@ -8,7 +8,6 @@ variable "region" {
   description = "The AWS region to deploy the cluster into (e.g. eu-central-1)"
   type        = string
   default     = "eu-central-1"
-  required    = true
 }
 
 variable "role_arn" {
@@ -31,13 +30,11 @@ variable "iam_permissions_boundary_policy_arn" {
 variable "platform_name" {
   description = "The name of the cluster that is used for tagging resources. Match the [a-z0-9_-]"
   type        = string
-  required    = true
 }
 
 variable "platform_domain_name" {
   description = "The name of existing DNS zone for platform"
   type        = string
-  required    = true
 }
 
 variable "create_vpc" {
