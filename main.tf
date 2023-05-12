@@ -2,22 +2,6 @@
 # Create the AWS IAM role: EKSDeployerRole to deploy EKS #
 # ====================================================== #
 
-data "aws_iam_policy_document" "assume_role_policy" {
-  statement {
-    actions = ["sts:AssumeRole"]
-
-    principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
-    }
-
-    principals {
-      type        = "AWS"
-      identifiers = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"]
-    }
-  }
-}
-
 resource "aws_iam_role" "deployer" {
   name                  = var.deployer_role_name
   description           = "IAM role to assume in order to deploy and manage EKS cluster"
@@ -213,21 +197,6 @@ resource "aws_iam_role" "deployer" {
 # ================================================================================== #
 # Create the AWS IAM role: ServiceRoleForEKSWorkerNode to connect to the EKS cluster #
 # ================================================================================== #
-
-data "aws_iam_policy_document" "workers_assume_role_policy" {
-  statement {
-    sid = "EKSWorkerAssumeRole"
-
-    actions = [
-      "sts:AssumeRole",
-    ]
-
-    principals {
-      type        = "Service"
-      identifiers = [local.ec2_principal]
-    }
-  }
-}
 
 resource "aws_iam_instance_profile" "workers" {
   name_prefix = local.worker_group_role_name
